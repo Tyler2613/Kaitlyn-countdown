@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Year of Us ❤️</title>
+<style>
+  :root {
+    --red: #ff2449;
+    --deep-red: #9e1029;
+    --black: #070707;
+    --card: rgba(20, 20, 20, .82);
+    --white: #fff;
+    --muted: #d7d7d7;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--white);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255,36,73,.22), transparent 34%),
+      linear-gradient(180deg, #050505 0%, #12070a 45%, #050505 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .12;
+    background-image:
+      linear-gradient(115deg, transparent 0 47%, rgba(255,255,255,.08) 48%, transparent 49%),
+      linear-gradient(65deg, transparent 0 47%, rgba(255,36,73,.08) 48%, transparent 49%);
+    background-size: 90px 90px;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 35px 20px;
+    position: relative;
+  }
+
+  .hero-inner { max-width: 900px; }
+
+  .date {
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #ff9aaa;
+    font-size: .8rem;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 12vw, 7rem);
+    line-height: .9;
+    margin: 18px 0;
+    text-shadow: 0 0 30px rgba(255,36,73,.45);
+  }
+
+  .heart { color: var(--red); }
+
+  .subtitle {
+    font-size: clamp(1.05rem, 3vw, 1.35rem);
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 auto 30px;
+  }
+
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(65px, 1fr));
+    gap: 10px;
+    max-width: 650px;
+    margin: 30px auto;
+  }
+
+  .time-box {
+    background: var(--card);
+    border: 1px solid rgba(255,36,73,.35);
+    border-radius: 18px;
+    padding: 18px 8px;
+    box-shadow: 0 0 25px rgba(255,36,73,.08);
+    backdrop-filter: blur(8px);
+  }
+
+  .number {
+    font-size: clamp(1.7rem, 6vw, 3.2rem);
+    font-weight: 800;
+  }
+
+  .label {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #aaa;
+  }
+
+  .scroll {
+    display: inline-block;
+    margin-top: 25px;
+    color: #ffb1be;
+    text-decoration: none;
+  }
+
+  main {
+    width: min(1050px, 92%);
+    margin: auto;
+    padding-bottom: 80px;
+  }
+
+  section {
+    margin: 35px 0;
+    padding: clamp(25px, 5vw, 50px);
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 28px;
+    box-shadow: 0 15px 50px rgba(0,0,0,.3);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-top: 0;
+  }
+
+  .red { color: var(--red); }
+
+  .letter {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: #eee;
+  }
+
+  .verse {
+    margin-top: 30px;
+    padding: 25px;
+    border-left: 4px solid var(--red);
+    background: rgba(255,36,73,.08);
+    border-radius: 0 18px 18px 0;
+    line-height: 1.8;
+    font-style: italic;
+    color: #f5dce1;
+  }
+
+  .verse-ref {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    color: #ff8095;
+    font-weight: 700;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .card {
+    min-height: 150px;
+    padding: 24px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(255,36,73,.12), rgba(255,255,255,.035));
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .icon { font-size: 2.2rem; }
+
+  .card h3 { margin: 10px 0 7px; }
+
+  .card p {
+    margin: 0;
+    color: #cfcfcf;
+    line-height: 1.6;
+  }
+
+  .final {
+    text-align: center;
+    background:
+      radial-gradient(circle at center, rgba(255,36,73,.18), transparent 60%),
+      var(--card);
+  }
+
+  .final h2 { font-size: clamp(2.2rem, 7vw, 4.5rem); }
+
+  .signature {
+    color: #ff9aaa;
+    margin-top: 25px;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    text-align: center;
+    color: #777;
+    padding: 0 20px 40px;
+    font-size: .85rem;
+  }
+
+  @media (max-width: 650px) {
+    .countdown { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: 1fr; }
+    section { border-radius: 22px; }
+  }
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="date">October 5, 2025 → October 5, 2026</div>
+
+    <h1>One Year<br><span class="heart">of Us ❤️</span></h1>
+
+    <p class="subtitle">
+      One year since two people started talking and somehow created
+      something incredibly special.
+    </p>
+
+    <div class="countdown" id="countdown">
+      <div class="time-box"><div class="number" id="days">0</div><div class="label">Days</div></div>
+      <div class="time-box"><div class="number" id="hours">0</div><div class="label">Hours</div></div>
+      <div class="time-box"><div class="number" id="minutes">0</div><div class="label">Minutes</div></div>
+      <div class="time-box"><div class="number" id="seconds">0</div><div class="label">Seconds</div></div>
+    </div>
+
+    <a class="scroll" href="#letter">↓ keep scrolling ↓</a>
+  </div>
+</header>
+
+<main>
+
+<section id="letter">
+  <h2>For <span class="red">Kaitlyn</span> ❤️</h2>
+
+  <div class="letter">
+    <p>
+      I don't think I could ever fully explain how much you mean to me.
+      Since October 5, 2025, you have become such an important part of my life,
+      and I thank God that He allowed our paths to cross.
+    </p>
+
+    <p>
+      I love how you joke with me and how we can just talk for hours. I love
+      when you share your feelings and thoughts with me, when you tell me about
+      your day, and when I see you and it feels like you light up because you're
+      happy to see me. I love how much you care about me and how well you
+      understand me.
+    </p>
+
+    <p>
+      I love your faith and your relationship with God. I love how passionate
+      you are about ASL, how smart you are, and how you teach me things.
+      I love that you think of me and invite me along, even when it's something
+      as simple as driving somewhere to pick something up.
+    </p>
+
+    <p>
+      I love your laugh. I love your smile. I love everything that makes you
+      you. You are so beautiful that sometimes when I see you, it genuinely
+      catches me off guard. You somehow seem more beautiful every time I see you,
+      and sometimes I still get a little lost, nervous, or flustered because of
+      how beautiful and amazing you are in my eyes.
+    </p>
+
+    <p>
+      I do actually love you. I care about you deeply, and more than anything,
+      I want you to be happy and to keep growing in your faith and relationship
+      with God. I love that you have that Jesus glow.
+    </p>
+
+    <p>
+      I love that you show interest in the things I'm interested in, and that
+      we can share our hobbies and spend time doing things together. I love that
+      we can have a super busy day, watch movies or shows, go somewhere, or
+      literally do nothing and still have a great time.
+    </p>
+
+    <p>
+      I love how comfortable we are around each other. I love how we support,
+      believe in, respect, and trust each other. I love talking to you because
+      even when I've had a bad day, talking to you can make it better.
+    </p>
+
+    <p>
+      I love going to church with you and doing things connected to our faith.
+      I love going to concerts and car events with you, watching drifting,
+      going to places like the botanic garden or Naperville, and going to ASL
+      events or learning ASL together.
+    </p>
+
+    <p>
+      I love that you're in my life. I love you, Kaitlyn, and I am so thankful
+      for every memory, every conversation, every laugh, and every little moment
+      we've shared during this first year.
+    </p>
+
+    <div class="verse">
+      “Love is patient, love is kind... It always protects, always trusts,
+      always hopes, always perseveres.”
+      <span class="verse-ref">— 1 Corinthians 13:4–8</span>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section>
+  <h2>What I <span class="red">love about you</span> ❤️</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">💬</div>
+      <h3>The way we talk</h3>
+      <p>
+        I love that we can talk for hours, tell each other how our day went,
+        share our thoughts and feelings, or somehow have just as much fun
+        sitting around doing nothing.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✝️</div>
+      <h3>Your faith</h3>
+      <p>
+        I love your faith and your relationship with God. I love seeing your
+        passion for Jesus and the way you push me to become a better Christian.
+        Your “Jesus glow” is one of the things I admire most about you.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🤟</div>
+      <h3>Your passion for ASL</h3>
+      <p>
+        I love how passionate you are about ASL, how much you know, and how
+        you teach me things. I love getting to learn it with you and be part
+        of something that matters so much to you.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏎️</div>
+      <h3>Our car adventures</h3>
+      <p>
+        I love going to car events and meets with you, seeing how excited you
+        get watching drifting, and getting to share that whole world together.
+        I'm glad car stuff became something we can enjoy together.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌊</div>
+      <h3>Our adventures</h3>
+      <p>
+        From places like Naperville and the botanic garden to concerts,
+        church events, movies, and random drives, I love that even the
+        simplest plans become memories with you.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">❤️</div>
+      <h3>The little things</h3>
+      <p>
+        I love when you invite me along just to drive somewhere, when you
+        think of me, when you share your interests with me, and when I get
+        to see you light up and be happy to see me.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>A year of <span class="red">little moments</span> ❤️</h2>
+
+  <div class="letter">
+    <p>
+      Some of my favorite memories aren't necessarily the biggest things we did.
+      Sometimes they're the random conversations, the drives, the invitations,
+      the jokes, the church days, the car meets, the ASL moments, or simply
+      sitting together and realizing we don't actually need a plan to have fun.
+    </p>
+
+    <p>
+      I love that we can share each other's interests and still be completely
+      comfortable just being ourselves. Whether we're doing something exciting
+      or absolutely nothing, being around you is something I never take for granted.
+    </p>
+
+    <p>
+      One year is a lot of conversations, a lot of laughs, a lot of memories,
+      and a lot of moments I wouldn't trade for anything.
+    </p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="icon">❤️</div>
+  <h2>Happy 1 Year, Kaitlyn</h2>
+
+  <p class="letter">
+    Thank you for being you.<br>
+    Thank you for every conversation, every laugh, every memory,
+    every invitation, every adventure, and every little moment that made
+    this year so special to me.
+  </p>
+
+  <p class="letter">
+    <strong>I love you more than I can explain.</strong><br>
+    You are beautiful. You are amazing. You are so incredibly special to me.
+  </p>
+
+  <p class="letter">
+    I pray you have an amazing day, keep growing closer to God,
+    and never forget just how loved and appreciated you are.
+  </p>
+
+  <div class="signature">
+    October 5, 2025 → October 5, 2026<br>
+    ❤️
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Made with love ❤️ · For one very special person
+</footer>
+
+<script>
+  const target = new Date("2026-10-05T00:00:00-05:00").getTime();
+
+  function updateCountdown() {
+    const now = Date.now();
+    const difference = target - now;
+
+    if (difference <= 0) {
+      document.getElementById("countdown").innerHTML =
+        '<div class="time-box" style="grid-column:1/-1">' +
+        '<div class="number">❤️</div>' +
+        '<div class="label">Happy 1 Year</div></div>';
+      return;
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / (1000 * 60)) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
